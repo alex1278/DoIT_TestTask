@@ -1,0 +1,35 @@
+@nice-blue: #5B83AD;
+@light-blue: @nice-blue + #111;
+
+
+body{
+    margin: 0;
+    #app{
+        max-width: 1000px;
+        margin: 0 auto;
+        min-width: 315px;
+    }
+}
+
+nav{
+    background-color: #e8ebf1;
+    display: flex;
+    position: relative;
+    a{
+        padding: 20px 30px;
+        text-decoration: none;
+        color: #3c3c3c;
+        &:hover{
+            color: #000000;
+        }
+    }
+    .registerBlock{
+        position: absolute;
+        right: 0px;
+        top: 20px;
+    }
+
+}
+.pageContent{
+    padding: 20px;
+}
