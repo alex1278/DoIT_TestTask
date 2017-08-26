@@ -6,6 +6,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
+import jwtDecode from 'jwt-decode';
 
 import reducer from './reducers';
 import App from './components/App';
@@ -13,11 +14,16 @@ import MainPage from './components/MainPage';
 import About from './components/About';
 import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
+import { setCurrentUser } from './actions/authActions';
 
 import './assets/style.less';
 
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 const history = syncHistoryWithStore(hashHistory, store);
+
+if (localStorage.jwtToken) {
+    store.dispatch(setCurrentUser(jwtDecode(localStorage.jwtToken)));
+}
 
 ReactDOM.render(
     <Provider store={store}>

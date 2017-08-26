@@ -3,9 +3,9 @@ import React from 'react';
 class About extends React.Component {    
     render() { 
         return (
-            <div>
+            <h4 className="about">
                 Hi! My name is Natalia Zykina and I'm frontend developer.
-            </div>
+            </h4>
         )  
     }
 }

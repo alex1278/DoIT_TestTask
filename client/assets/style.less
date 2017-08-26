@@ -10,11 +10,47 @@ body{
         min-width: 315px;
     }
 }
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+button.close {
+    -webkit-appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+}
+
+.close {
+    float: right;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity: .2;
+}
 
 nav{
     background-color: #e8ebf1;
     display: flex;
     position: relative;
+    margin-bottom: 15px;
     a{
         padding: 20px 30px;
         text-decoration: none;
@@ -30,6 +66,32 @@ nav{
     }
 
 }
-.pageContent{
-    padding: 20px;
+
+h4.about{
+    padding-left: 15px;
+    color: #3c3c3c;
+}
+
+form{
+    text-align: center;
+    .form-group{
+        margin-bottom: 15px;
+        input.form-control{
+            height: 20px;
+            padding: 6px 12px;
+            width: 30%;
+            border-radius: 4px;
+        }
+        .help-block {
+            display: block;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            color: #a94442;
+            font-size: 80%;
+
+        }
+    }
+    .has-error .form-control {
+        border-color: #a94442;
+    }
 }
