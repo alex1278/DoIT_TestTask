@@ -1,13 +1,9 @@
 import React from 'react';
-import GoogleMapComponent from './GoogleMapComponent'
+import MapComponent from './MapComponent';
 
 class MainPage extends React.Component {    
     render() { 
-        return (
-            <div>
-                <GoogleMapComponent/>
-            </div>
-        )  
+        return <MapComponent/>  
     }
 }
 

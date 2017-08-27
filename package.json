@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon --watch server --exec babel-node -- server/index.js",
+    "start": "nodemon --watch server --exec babel-node -- server/index.js",
     "client": "webpack --watch --config ./client/webpack.config.js"
   },
   "author": "",
@@ -28,6 +28,8 @@
     "webpack-dev-middleware": "^1.12.0"
   },
   "dependencies": {
+    "2gis-maps": "^3.3.5",
+    "2gis-maps-react": "0.0.4",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.2",
     "classnames": "^2.2.5",
