@@ -1,6 +1,5 @@
 import express from 'express';
 let router = express.Router();
-import assert from 'assert';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 

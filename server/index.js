@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 
 import users from './routes/users';
+import markers from './routes/markers';
 
 mongoose.connect('mongodb://localhost:27017/doit');
 
@@ -12,6 +13,7 @@ let app = express();
 app.use(bodyParser.json());
 
 app.use('/users', users);
+app.use('/markers', markers);
 
 app.use('/static', express.static(path.join(__dirname, 'public')));
 

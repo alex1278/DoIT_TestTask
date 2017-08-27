@@ -3,6 +3,8 @@ import { Map, Marker, Popup } from '2gis-maps-react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import { saveMarkersRequest } from '../actions/markersActions';
+
 class MapComponent extends Component {
     constructor() {
         super();
@@ -16,7 +18,7 @@ class MapComponent extends Component {
         this.addMarker = this.addMarker.bind(this);
         this.removeMarker = this.removeMarker.bind(this);
         this.removeAllMarkers = this.removeAllMarkers.bind(this);
-
+        this.saveMarkers = this.saveMarkers.bind(this);
     }
 
     componentWillMount() {
@@ -63,14 +65,28 @@ class MapComponent extends Component {
         });
     }
 
+    saveMarkers() {
+        let markers = this.state.markers;
+        let markersPositions = markers.map((marker) => marker.props.pos);
+        const { userData } = this.props.authorization; 
+        this.props.saveMarkersRequest(userData.id, markersPositions).then(
+            (response) => {
+                console.log(response);
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+        console.log("request to server",markersPositions);
+    }
+
     render() {
-        console.log(this.state.markers);
         const { isAuthenticated } = this.props.authorization;
         const userBlock = (
             <div className="btnsBlock">
                 <button onClick={this.removeMarker} disabled={!this.state.markers.length}>Remove last marker</button>
                 <button onClick={this.removeAllMarkers} disabled={!this.state.markers.length}>Remove all markers</button>
-                <button>Save markers</button>
+                <button onClick={this.saveMarkers}>Save markers</button>
             </div>
         ); 
         const guestBlock = (
@@ -95,7 +111,8 @@ class MapComponent extends Component {
 }
 
 MapComponent.propTypes = {
-    authorization: PropTypes.object.isRequired
+    authorization: PropTypes.object.isRequired,
+    saveMarkersRequest: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
@@ -105,4 +122,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps)(MapComponent);
+export default connect(mapStateToProps, {saveMarkersRequest})(MapComponent);
